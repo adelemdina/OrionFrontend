@@ -1,0 +1,2 @@
+# Orion-Index-
+En este repositorio se estará creando el index.html ,también se pondrán imágenes , js, css y mas cosas que sean necesarias para el funcionamiento de la pagina inicial.

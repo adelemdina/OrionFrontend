@@ -1,0 +1,127 @@
+/*---------Fuentes de text*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300&family=Roboto:wght@100;400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Flex:opsz,wght@8..144,300&family=Roboto:wght@100;400&display=swap');
+
+@font-face {
+  font-family: "myFont-title-koulen";
+  src: url("../img/fuentes/Koulen-Regular.ttf");
+}
+
+@font-face {
+  font-family: "myFont-title-lemon-milk";
+  src: url("../img/fuentes/LEMONMILK-Regular.otf");
+}
+
+/*====================================================*/
+
+/*==========banners-inicio========*/
+
+.banner-quines-somos-intro {
+    background-image: url(../img/equipo.png);
+    background: -webkit-linear-gradient(to top, #1a1a1a85, #1a1a1a30, #1a1a1a85) url(../img/equipo.png);
+    background: linear-gradient(to top, #1a1a1a85, #1a1a1a30, #1a1a1a85),
+        url(../img/equipo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.content-banner-info{
+    width: 45%;
+    padding-top: 25%;
+    padding-left: 3%;
+}
+
+.titulo-del-banner {
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 600;
+    font-family: "myFont-title-lemon-milk";
+    position: relative;
+}
+
+.info-banner-quienes-somos {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight:600;
+    font-family: 'Roboto Flex', sans-serif;
+    position: relative;
+}
+
+/*==========banner-segundario======*/
+.banner-mas-info {
+    background-image: url(../img/fabrica.png);
+    background: -webkit-linear-gradient(to top, #1a1a1a85, #1a1a1a30, #1a1a1a85) url(../img/fabrica.png);
+    background: linear-gradient(to top, #1a1a1a85, #1a1a1a30, #1a1a1a85),
+        url(../img/fabrica.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+/*==============box video=================*/
+
+#banner-youtube {
+    background-image: url(../img/blurbanner.jpg);
+    background: -webkit-linear-gradient(to top, #1a1a1a85, #1a1a1a30, #1a1a1a85) url(../img/blurbanner.jpg);
+    background: linear-gradient(to top, #1a1a1a85, #1a1a1a30, #1a1a1a85),
+        url(../img/blurbanner.jpg);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 100vh;
+}
+
+
+.iframe-quienes-somos {
+    position: absolute;
+    top: 261%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 40%;
+    height: 50%;
+
+    border-radius: 20px;
+
+    -webkit-box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.52);
+    box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.52);
+}
+
+.title-banners {
+    font-family: sans-serif;
+    font-weight: 900;
+    text-align: center;
+    padding-top: 90px;
+
+    font-size: 40px;
+    color: #ffffff;
+}
+
+/*RESPONSIVE celulares actules*/
+@media (max-width: 829px) {
+    .iframe-quienes-somos {
+        width: 88%;
+        height: 23%;
+    }
+
+    .title-banners {
+        padding-top: 60%;
+        font-size: 29px;
+    }
+}
+
+/*RESPONSIVE celulares pequeños*/
+@media (max-width: 344px) {
+    .iframe-quienes-somos {
+        width: 88%;
+        height: 30%;
+    }
+
+    .title-banners {
+        padding-top: 32%;
+        font-size: 26px;
+    }
+}
