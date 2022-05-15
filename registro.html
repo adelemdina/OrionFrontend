@@ -39,7 +39,7 @@
         </div>
     </nav>
 
-    <form class="form_contact">
+    <form class="form_contact" action="insertar.php">
 
         <h1 class="title-form">REGISTRO</h1>
 
@@ -58,8 +58,8 @@
             <label for="pass"><i class="fas fa-key"></i>Contraseña</label>
             <input type="password" id="pass" name="pass" required>
 
-            <label for="pass"><i class="fas fa-key"></i>Confirmar contraseña</label>
-            <input type="password" id="pass-confi" name="pass" required>
+            <!-- <label for="pass"><i class="fas fa-key"></i>Confirmar contraseña</label>
+            <input type="password" id="pass-confi" name="pass" required> -->
 
             <div class="roundedTwo">
                 <input type="checkbox" onclick="Toggle()" value="None" id="roundedTwo" name="mostrar contraseña"
@@ -67,7 +67,8 @@
                 <label for="roundedTwo"></label>
             </div>
 
-            <a href="" class="cambio-de-pagina">¿Ya esta registrado?</a>
+            <a href="login.html" class="cambio-de-pagina">¿Ya esta registrado?</a>
+            
 
             <input type="submit" class="btnSend" value="Registrarse" id="btnSend">
 
