@@ -1,3 +1,18 @@
+<?php 
+ session_start();
+ 
+ if(isset($_SESSION['usuario'])) {
+    header('Location: index.html');
+        
+      
+    }
+
+
+    require_once  'conexion.php';
+    require_once  'userlogin.php';
+    require_once  'metodos.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -39,7 +54,7 @@
         </div>
     </nav>
 
-    <form class="form_contact">
+    <form class="form_contact" action="userlogin.php" method="POST">
 
         <h1 class="title-form">Iniciar sesión</h1>
 
@@ -60,7 +75,7 @@
             <br>
             <a href="recuperar.html" class="cambio-de-pagina">¿Olvidaste Tu Contraseña?</a>
 <br>
-            <input type="submit" class="btnSend" value="Iniciar Sesion" id="btnSend">
+            <input type="submit" name="submit" class="btnSend" value="Iniciar Sesion" id="btnSend">
 
         </div>
     </form>

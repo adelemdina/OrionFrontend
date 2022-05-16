@@ -39,7 +39,7 @@
         </div>
     </nav>
 
-    <form class="form_contact" action="insertar.php">
+    <form class="form_contact" action="insertar.php" method="POST">
 
         <h1 class="title-form">REGISTRO</h1>
 
@@ -58,8 +58,8 @@
             <label for="pass"><i class="fas fa-key"></i>Contraseña</label>
             <input type="password" id="pass" name="pass" required>
 
-            <!-- <label for="pass"><i class="fas fa-key"></i>Confirmar contraseña</label>
-            <input type="password" id="pass-confi" name="pass" required> -->
+            <label for="pass"><i class="fas fa-key"></i>Confirmar contraseña</label>
+            <input type="password" id="pass-confi" name="pass-confi" required> 
 
             <div class="roundedTwo">
                 <input type="checkbox" onclick="Toggle()" value="None" id="roundedTwo" name="mostrar contraseña"
