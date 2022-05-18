@@ -29,6 +29,7 @@
 
     <script src="https://kit.fontawesome.com/c56cdedc82.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -39,26 +40,24 @@
         </div>
     </nav>
 
-    <form class="form_contact">
+    <form class="form_contact" action="recuperar.php" method="POST">
 
         <h1 class="title-form">Recuperar contraseña</h1>
 
         <div class="user_info">
 
-            <label for="pass"><i class="fas fa-key"></i>Contraseña</label>
-            <input type="password" id="pass" name="pass" required>
+            <label for="pass"><i class="fas fa-key"></i>Correo</label>
+            <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
 
-            <label for="pass"><i class="fas fa-key"></i>Confirmar contraseña</label>
-            <input type="password" id="pass-confi" name="pass" required>
-
-            <div class="roundedTwo">
+          
+            <!-- <div class="roundedTwo">
                 <input type="checkbox" onclick="Toggle()" value="None" id="roundedTwo" name="mostrar contraseña" checked />
                 <label for="roundedTwo"></label>
-            </div>
+            </div> -->
 
             <a href="login.html" class="cambio-de-pagina">Iniciar sesion?</a>
 
-            <input type="submit" class="btnSend" value="Confirmar" id="btnSend">
+            <input type="submit" class="btnSend" value="Enviar" id="btnSend">
 
         </div>
     </form>

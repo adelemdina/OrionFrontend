@@ -1,17 +1,6 @@
-<?php 
- session_start();
- 
- if(isset($_SESSION['usuario'])) {
-    header('Location: index.html');
-        
-      
-    }
+<?php
 
-
-    require_once  'php/conexion.php';
-    require_once  'php/userlogin.php';
-    require_once  'php/metodos.php';
-?>
+if($_REQUEST['tokenUser'] !="" && $_REQUEST['id'] !=""){ ?>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="./css/index.css" />
-    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/recuparar-pass.css" />
 
     <script src="./js/script1.1.js"></script>
     <script src="./js/jquery-3.2.1.js"></script>
@@ -54,28 +43,29 @@
         </div>
     </nav>
 
-    <form class="form_contact" action="php/userlogin.php" method="POST">
+    <form class="form_contact" action="updateClave.php" method="POST">
 
-        <h1 class="title-form">Iniciar sesión</h1>
+        <h1 class="title-form">Recuperar contraseña</h1>
 
         <div class="user_info">
 
-            <label for="email"><i class="fas fa-at"></i>Correo electronico</label>
-            <input type="email" id="correo" name="correo" required>
-
             <label for="pass"><i class="fas fa-key"></i>Contraseña</label>
             <input type="password" id="pass" name="pass" required>
+
+            <label for="pass"><i class="fas fa-key"></i>Confirmar contraseña</label>
+            <input type="password" id="pass-confi" name="passconfi" required>
+
+            <input type="text" name="id" value="<?php echo $_REQUEST['id']; ?>"hidden="true" >
+            <input type="text" name="tokenUser" value="<?php echo $_REQUEST['tokenUser']; ?> " hidden="true">
 
             <div class="roundedTwo">
                 <input type="checkbox" onclick="Toggle()" value="None" id="roundedTwo" name="mostrar contraseña" checked />
                 <label for="roundedTwo"></label>
             </div>
 
-            <a href="registro.html" class="cambio-de-pagina">¿No estas registrado?</a>
-            <br>
-            <a href="recuperar.html" class="cambio-de-pagina">¿Olvidaste Tu Contraseña?</a>
-<br>
-            <input type="submit" name="submit" class="btnSend" value="Iniciar Sesion" id="btnSend">
+            <a href="#" class="cambio-de-pagina">Iniciar sesion?</a>
+
+            <input type="submit" class="btnSend" value="Confirmar" id="btnSend">
 
         </div>
     </form>
@@ -107,3 +97,8 @@
 </body>
 
 </html>
+
+<?php 
+}else{ ?>
+    <meta http-equiv="refresh" content="0;url=index.html"/>
+<?php } ?>
