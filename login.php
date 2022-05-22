@@ -8,9 +8,9 @@
     }
 
 
-    require_once  'php/conexion.php';
-    require_once  'php/userlogin.php';
-    require_once  'php/metodos.php';
+    require_once  'conexion.php';
+    require_once  'userlogin.php';
+    require_once  'metodos.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 
 <head>
 
-    <title>Autocaress Orion - Registro</title>
+    <title>Autocaress Orion - Login</title>
     <link rel="icon" href="./img/navicon.png">
 
     <meta charset="UTF-8">
@@ -54,7 +54,7 @@
         </div>
     </nav>
 
-    <form class="form_contact" action="php/userlogin.php" method="POST">
+    <form class="form_contact" action="userlogin.php" method="POST">
 
         <h1 class="title-form">Iniciar sesión</h1>
 

@@ -1,5 +1,5 @@
 <?php
-include('php/conexion.php');
+require_once('conexion.php');
 
 if(!empty($_POST)){
 $id 		    = $_REQUEST['id'];
@@ -25,23 +25,23 @@ if ($hash != $hash1){
 
 }else{
 
-    $c = new conectar();
-    $conexion=$c->conexion(); 
+    $query = $mbd->prepare("UPDATE usuario SET contrasena=:pass WHERE id= :id AND token=:token ");
+    $query->bindValue(':pass',$hash);
+    $query->bindValue(':id',$id);
+    $query->bindValue(':token',$tokenUser);
 
-    $updateClave    = ("UPDATE usuario SET contrasena='$hash' WHERE id='$id' AND tokenUser='$tokenUser' ");
-    $queryResult    = mysqli_query($conexion,$updateClave); 
-    if(isset($queryResult)){
-    ?>
-        <script>
+    $query->execute();
+
+    if(isset($query))
+    {
+        $message = 'Constraseña actualizada';
+        header('Location:login.php');
+    }else{
+        $message = 'Lo sentimos, pero ha ocurrido un problema al actualizar sus datos';
+    }   
+
+   
     
-        alert('Contraseña Actualizada');
-    
-        location.href = "login.php";
-    
-        </script>
-    <?php 
-    
-    }
 }
 
 }

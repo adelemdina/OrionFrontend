@@ -6,8 +6,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 
-require_once("php/conexion.php");
-require_once("php/metodos.php");
+require_once("conexion.php");
+require_once("metodos.php");
 
 
 require_once ('PHPMailer/Exception.php');
@@ -25,27 +25,38 @@ if(!empty($_POST)){
 
     if($obj->emailExiste($correo)){
 
-        $c = new conectar();
-        $conexion=$c->conexion(); 
+      
+        $query = $mbd->prepare("SELECT * FROM usuario WHERE email ='$correo' ");
+        $query -> execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+       
+        if( $query){
+            if( $query -> rowCount() > 0){
 
-        $consulta           = ("SELECT * FROM usuario WHERE email ='$correo' ");
-
-        $result      = mysqli_query($conexion, $consulta);
-        if( $result){
-            if( mysqli_num_rows( $result) > 0){
-
-                $fila = mysqli_fetch_array( $result ); 
+                $fila =  $result; 
               
-                function generandoTokenClave($length = 20) {
+            function generandoTokenClave($length = 20) {
                     return substr(str_shuffle(str_repeat($x='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklymopkz', ceil($length/strlen($x)) )),1,$length);
                 }
                 $miTokenClave     = generandoTokenClave();
                 
                 //Agregando Token en la tabla BD
-                $updateClave    = ("UPDATE usuario SET tokenUser='$miTokenClave' WHERE email='$correo' ");
-                $queryResult    = mysqli_query($conexion,$updateClave); 
+               
+                $query = $mbd->prepare("UPDATE usuario SET token = :token  WHERE email = :email ");
+                $query->bindValue(':token',$miTokenClave);
+                $query->bindValue(':email',$correo);
 
-                $linkRecuperar      = "https://localhost/OrionFrontend/nuevaclave.html?id=".$fila['id']."&tokenUser=".$miTokenClave;
+                $query->execute();
+
+                if($query->rowCount() > 0)
+                {
+                    $message = 'Se ha creado su cuenta satisfactoriamente en la pagina';
+                }else{
+                    $message = 'Lo sentimos, pero ha ocurrido un problema con la base de datos';
+                }   
+                
+                           
+                $linkRecuperar      = "https://localhost/OrionFrontend/nuevaclave.php?id=".$fila['id']."&tokenUser=".$miTokenClave;
                 
               
                 $mail = new PHPMailer(true);

@@ -22,16 +22,10 @@ $hash = md5($pass);
             header('Location:index.html');
             
         }else{
-            
-            ?>
-            <script>
+                  
 
-           alert('Contraseña o correo invalido');
-
-            location.href = "../login.php";
-
-            </script>
-        <?php 
+            header('Location:login.php')
+          
         }
     }
 }
