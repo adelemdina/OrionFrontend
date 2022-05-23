@@ -5,7 +5,7 @@ class user{
         $c = new conectar();
         $conexion=$c->conexion(); 
 
-        $sql = "SELECT * FROM usuario where correo='$correo' and contrasena = '$pass'";
+        $sql = "SELECT * FROM usuarios where correo='$correo' and contrasena = '$pass'";
 
         $result = mysqli_query($conexion,$sql);
 

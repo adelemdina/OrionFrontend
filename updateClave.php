@@ -13,19 +13,14 @@ $hash1 = md5($passconfi);
 
 if ($hash != $hash1){
 
-    ?>
-    <script>
 
-    alert('Las contraseña no coinciden');
+   header('Location:registro.html'); 
 
-    location.href = "registro.html";
-
-    </script>
-<?php 
+  
 
 }else{
 
-    $query = $mbd->prepare("UPDATE usuario SET contrasena=:pass WHERE id= :id AND token=:token ");
+    $query = $mbd->prepare("UPDATE usuarios SET contrasena=:pass WHERE id= :id AND token=:token ");
     $query->bindValue(':pass',$hash);
     $query->bindValue(':id',$id);
     $query->bindValue(':token',$tokenUser);

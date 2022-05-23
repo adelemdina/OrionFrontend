@@ -1,11 +1,11 @@
 <?php 
- /*require_once 'conexion.php'; comantado porque no funciona aca ayuda*/
-class metodos{
 
+class metodos{
+   
     public function insertar($nombre,$telefono,$correo,$hash1,$hash){
-        require 'conexion.php';
+       
         if($hash=$hash1){
-            $query = $mbd->prepare("INSERT INTO usuario (nombre, telefono, email, contrasena) VALUES (:nombre, :telefono, :email, :contrasena)");
+            $query = $mbd->prepare("INSERT INTO usuarios (nombre, telefono, email, contrasena) VALUES (:nombre, :telefono, :email, :contrasena)");
             $query -> bindValue(':nombre', $nombre);
             $query -> bindValue(':telefono', $telefono);
             $query -> bindValue(':email', $correo);
@@ -22,9 +22,11 @@ class metodos{
 
     public function getUser($correo,$hash){
        
-        require 'conexion.php';
+        
 
-        $query = $mbd->prepare("SELECT * FROM usuario where email='$correo' and contrasena = '$hash'");
+        $query = $mbd->prepare("SELECT * FROM usuarios where email=:email and contrasena = :contrasena");
+        $query -> bindValue(':email', $correo);
+        $query -> bindValue(':contrasena', $hash);
         $query -> execute();
 
         
@@ -59,9 +61,9 @@ class metodos{
 
     public function emailExiste($correo){
      
-        require 'conexion.php';
-
-        $query = $mbd->prepare("SELECT * FROM usuario WHERE email='$correo'");
+       
+        $query = $mbd->prepare("SELECT * FROM usuarios WHERE email=:email ");
+        $query -> bindValue(':email', $correo);
         $query -> execute();
         //$results = $query -> fetchAll(PDO::FETCH_OBJ); 
         

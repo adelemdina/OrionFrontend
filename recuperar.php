@@ -26,7 +26,9 @@ if(!empty($_POST)){
     if($obj->emailExiste($correo)){
 
       
-        $query = $mbd->prepare("SELECT * FROM usuario WHERE email ='$correo' ");
+        $query = $mbd->prepare("SELECT * FROM usuarios WHERE email =:email ");
+        $query -> bindValue(':email', $correo);
+   
         $query -> execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
        
@@ -42,7 +44,7 @@ if(!empty($_POST)){
                 
                 //Agregando Token en la tabla BD
                
-                $query = $mbd->prepare("UPDATE usuario SET token = :token  WHERE email = :email ");
+                $query = $mbd->prepare("UPDATE usuarios SET token = :token  WHERE email = :email ");
                 $query->bindValue(':token',$miTokenClave);
                 $query->bindValue(':email',$correo);
 
