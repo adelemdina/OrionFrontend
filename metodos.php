@@ -2,14 +2,15 @@
 
 class metodos{
    
-    public function insertar($nombre,$telefono,$correo,$hash1,$hash){
+    public function insertar($datos){
+        require_once('conexion.php');
        
-        if($hash=$hash1){
+        if($datos[3]=$datos[4]){
             $query = $mbd->prepare("INSERT INTO usuarios (nombre, telefono, email, contrasena) VALUES (:nombre, :telefono, :email, :contrasena)");
-            $query -> bindValue(':nombre', $nombre);
-            $query -> bindValue(':telefono', $telefono);
-            $query -> bindValue(':email', $correo);
-            $query -> bindValue(':contrasena', $hash);
+            $query -> bindValue(':nombre', $datos[0]);
+            $query -> bindValue(':telefono', $datos[1]);
+            $query -> bindValue(':email', $datos[2]);
+            $query -> bindValue(':contrasena', $datos[3]);
             $query -> execute();
            
         }else{
@@ -21,7 +22,7 @@ class metodos{
     }
 
     public function getUser($correo,$hash){
-       
+        require_once('conexion.php');
         
 
         $query = $mbd->prepare("SELECT * FROM usuarios where email=:email and contrasena = :contrasena");
@@ -60,7 +61,7 @@ class metodos{
     }
 
     public function emailExiste($correo){
-     
+        require 'conexion.php'; 
        
         $query = $mbd->prepare("SELECT * FROM usuarios WHERE email=:email ");
         $query -> bindValue(':email', $correo);
